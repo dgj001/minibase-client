@@ -1,0 +1,13 @@
+<div fxLayout="row">
+  <app-tree-columns [line]="line"></app-tree-columns>
+  <div class="line__outer" fxLayout="row">
+    <div class="line__label">{{database.name}}</div>
+
+    <app-letter-button
+      [letter]="'+'"
+      *ngIf="!lockId"
+      (click)="onAddChild()"
+      title="Add collection">
+    </app-letter-button>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+.link,
+.link:visited {
+  border: 1px solid var(--color-gray-dark-3);
+  border-radius: 2px;
+  cursor: pointer;
+  color: var(--color-gray-dark-3);
+  &:hover {
+    color: var(--color-gray-dark-3);
+  }
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.0rem;
+  fill: currentColor;
+  pointer-events: none;
+}

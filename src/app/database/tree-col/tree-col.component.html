@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="cell-top-left" [class.right]="column.topVert"></div>
+  <div class="cell-top-right" [class.bottom]="column.rightHoriz"></div>
+  <div class="cell-bottom-left" [class.right]="column.bottomVert"></div>
+
+  <div class="overlay" *ngIf="column.isParent" (click)="onClickOverlay()">
+    <a alt="..." class="link">
+      <svg class="icon" *ngIf="column.isExpanded">
+        <use xlink:href="assets/svg/icons.svg#icon-minus"></use>
+      </svg>
+      <svg class="icon" *ngIf="!column.isExpanded">
+        <use xlink:href="assets/svg/icons.svg#icon-plus"></use>
+      </svg>
+    </a>
+  </div>
+</div>

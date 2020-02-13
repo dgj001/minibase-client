@@ -1,0 +1,17 @@
+.link,
+.link:visited {
+  padding: 4px 4px 2px 4px;
+  color: var(--color-gray-light-4);
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  cursor: pointer;
+  &:hover {
+    color: var(--color-gray-dark-3);
+  }
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.0rem;
+  fill: currentColor;
+}

@@ -1,0 +1,44 @@
+<div fxLayout="row">
+  <app-tree-columns [line]="line"></app-tree-columns>
+
+  <div class="line__outer" fxLayout="row">
+    <span *ngIf="!line.isNew">
+      <div
+        class="line__label"
+        [class.line__label-link]="!lockId"
+        (click)="onClickName()"
+      >
+        {{document.name}}
+      </div>
+    </span>
+
+    <div *ngIf="line.isNew" fxLayout="row">
+      <div class="line__label">Name:</div>
+      <input
+        #newName
+        class="line__value line__value-editing"
+        [(ngModel)]="document.name"
+        (keydown.enter)="addNew()"
+        (keydown.escape)="cancelNew()"
+      >
+      <div fxLayout="row" fxLayoutAlign="left center">
+        <app-icon-button [icon]="'icon-checkmark'" class="ok-button" (click)="addNew()"></app-icon-button>
+        <app-icon-button [icon]="'icon-cross'" (click)="cancelNew()"></app-icon-button>
+      </div>
+    </div>
+
+    <app-letter-button
+      letter="+"
+      *ngIf="!lockId"
+      (click)="onAddChild()"
+      title="Add field">
+    </app-letter-button>
+    &nbsp;
+    <app-letter-button
+      letter="x"
+      *ngIf="!lockId"
+      (click)="onDeleteChild()"
+      title="Delete">
+    </app-letter-button>
+  </div>
+</div>

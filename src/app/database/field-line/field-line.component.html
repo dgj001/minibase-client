@@ -1,0 +1,52 @@
+<div fxLayout="row">
+  <app-tree-columns [line]="line"></app-tree-columns>
+
+  <span class="line__outer" fxLayout="row" >
+    <span *ngIf="!line.isNew">
+      <div class="line__label">{{field.name}}:</div>
+      <input
+        #oldValue
+        AutoSizeInput
+        [extraWidth]="5"
+        class="line__value"
+        [class.line__value-editing]="lockId === field.id"
+        [(ngModel)]="field.value"
+        (click)="editValue()"
+        (keydown.enter)="saveValue()"
+        (keydown.esc)="revertValue()"
+        (focusout)="saveValue()"
+      >
+    </span>
+
+    <div *ngIf="line.isNew" class="line__name" fxLayout="column">
+      <div fxLayout="row">
+        <div class="line__label">Name:</div>
+        <input
+          #newName
+          class="line__value line__value-editing"
+          [(ngModel)]="field.name"
+          (keydown.enter)="addNew()"
+          (keydown.escape)="cancelNew()"
+        >
+        <div class="line__label">Value:</div>
+        <input
+          #newValue
+          class="line__value line__value-editing"
+          [(ngModel)]="field.value"
+          (keydown.enter)="addNew()"
+          (keydown.escape)="cancelNew()"
+        >
+        <div fxLayout="row" fxLayoutAlign="left center">
+          <app-icon-button [icon]="'icon-checkmark'" class="ok-button" (click)="addNew()"></app-icon-button>
+          <app-icon-button [icon]="'icon-cross'" (click)="cancelNew()"></app-icon-button>
+        </div>
+      </div>
+    </div>
+    <app-letter-button
+      letter="x"
+      *ngIf="!lockId"
+      (click)="onDeleteChild()"
+      title="Delete">
+    </app-letter-button>
+  </span>
+</div>

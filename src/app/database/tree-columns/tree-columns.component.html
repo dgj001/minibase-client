@@ -1,0 +1,3 @@
+<div fxLayout="row" fxLayoutAlign="left stretch" class="col-row">
+  <app-tree-col *ngFor="let col of columns" [column]="col" (toggle)="onColToggle()"></app-tree-col>
+</div>
