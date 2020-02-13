@@ -15,11 +15,14 @@ import { MatListModule } from '@angular/material/list';
 import { CoreModule } from './core/core.module';
 import { DatabaseModule } from './database/database.module';
 import { SharedModule } from './shared/shared.module';
+import { ToolbarContentComponent } from './toolbar-content/toolbar-content.component';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidenavComponent
+    SidenavComponent,
+    ToolbarContentComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { SharedModule } from './shared/shared.module';
     MatListModule,
     CoreModule,
     DatabaseModule,
-    SharedModule
+    SharedModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]

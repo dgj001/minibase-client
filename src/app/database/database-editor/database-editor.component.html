@@ -2,8 +2,9 @@
   <div class="card">
     <div class="card__header" fxLayout="row" fxLayoutAlign="space-between">
       <div class="card__header-left" fxLayout="row">
+        &nbsp;
         <div *ngFor="let crumb of crumbs$ | async, let i = index" fxLayout="row">
-          <span *ngIf="i > 0"> > </span>
+          <span class="line__label" *ngIf="i > 0"> > </span>
           <div class="line__label line__label-link" (click)="onClickCrumb(crumb.id)">{{crumb.name}}</div>
         </div>
       </div>
