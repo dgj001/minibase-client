@@ -3,10 +3,25 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Minibase</mat-toolbar>
+    <mat-toolbar>
+      <svg class="header-icon">
+        <use xlink:href="assets/svg/icons.svg#icon-database"></use>
+      </svg>
+      Minibase
+    </mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/users" >Authenticate</a>
-      <a mat-list-item routerLink="/database">Database</a>
+      <a mat-list-item class="sidenav-link" routerLink="/users" routerLinkActive="sidenav-link-active">
+        <svg class="nav-icon">
+          <use xlink:href="assets/svg/icons.svg#icon-users"></use>
+        </svg>
+        Authenticate
+      </a>
+      <a mat-list-item class="sidenav-link" routerLink="/database" routerLinkActive="sidenav-link-active">
+        <svg class="nav-icon">
+          <use xlink:href="assets/svg/icons.svg#icon-credit-card"></use>
+        </svg>
+        Database
+      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

@@ -12,6 +12,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
 import { CoreModule } from './core/core.module';
 import { DatabaseModule } from './database/database.module';
 import { SharedModule } from './shared/shared.module';
@@ -35,6 +37,8 @@ import { UserModule } from './user/user.module';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    MatSelectModule,
+    MatOptionModule,
     CoreModule,
     DatabaseModule,
     SharedModule,

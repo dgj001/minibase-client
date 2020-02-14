@@ -24,8 +24,8 @@ export class DatabaseEditorComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.visibleLines$ = this.treeService.visibleLines;
     this.crumbs$ = this.treeService.crumbs;
-    this.projSubs = this.projectService.selectedProject.subscribe(project => {
-      this.treeService.load(project.id);
+    this.projSubs = this.projectService.selectedProjectId.subscribe(id => {
+      this.treeService.load(id);
     });
   }
 

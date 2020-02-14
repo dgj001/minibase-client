@@ -8,17 +8,23 @@ import { Project } from './project.model';
 @Injectable()
 export class ProjectService {
   projects = new Subject<Project[]>();
-  selectedProject = new Subject<Project>();
+  selectedProjectId = new Subject<string>();
+
+  private _selectedProjectId: string;
 
   constructor(private http: HttpClient) {
     this.getProjects(undefined).subscribe(projects => {
       this.projects.next(projects);
-      let proj: Project;
       if (projects.length > 0) {
-        proj = projects[0];
+        this._selectedProjectId = projects[0].id;
       }
-      this.selectedProject.next(proj);
+      this.selectedProjectId.next(this._selectedProjectId);
     });
+  }
+
+  setProjectId(projectId: string) {
+    this._selectedProjectId = projectId;
+    this.selectedProjectId.next(projectId);
   }
 
   private getProjects(userId: string): Observable<Project[]> {

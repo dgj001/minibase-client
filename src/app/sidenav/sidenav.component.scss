@@ -4,14 +4,45 @@
 
 .sidenav {
   width: 200px;
+  background-color: var(--color-blue-dark-3);
 }
 
 .sidenav .mat-toolbar {
   background: inherit;
+  color: var(--color-gray-light-3);
+  font-weight: 200;
 }
 
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
   z-index: 1;
+}
+
+.mat-toolbar {
+  background-color: var(--color-gray-light-2);
+  height: 50px;
+  box-shadow: 0 .2rem .5rem rgba(0, 0, 0, .3);
+}
+
+.sidenav-link {
+  color: var(--color-gray-light-3);
+}
+
+.sidenav-link-active {
+  color: var(--color-blue-light-3);
+}
+
+.header-icon {
+  fill: #FFD700;
+  height: 2.25rem;
+  width: 2.25rem;
+  margin-right: 1.5rem;
+}
+
+.nav-icon {
+  height: 1.75rem;
+  width: 1.75rem;
+  margin-right: 1.5rem;
+  fill: currentColor;
 }

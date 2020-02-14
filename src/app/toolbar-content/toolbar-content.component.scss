@@ -1,0 +1,18 @@
+.project-name {
+  margin-right: 2rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.location {
+  font-size: 1.4rem;
+  padding-bottom: 5px; // hack to align with project select
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+
+::ng-deep .mat-form-field-infix{
+  width: 120px !important;
+}
