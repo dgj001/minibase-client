@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ToolbarContentComponent } from './toolbar-content.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ProjectService } from '../core/project.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ToolbarContentComponent', () => {
   let component: ToolbarContentComponent;
@@ -8,9 +11,14 @@ describe('ToolbarContentComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ToolbarContentComponent ]
+      declarations: [ToolbarContentComponent],
+      imports: [
+        RouterTestingModule,
+        HttpClientTestingModule
+      ],
+      providers: [ProjectService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

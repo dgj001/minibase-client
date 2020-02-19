@@ -35,8 +35,10 @@
   color: currentColor;
 }
 
-app-letter-button {
-  visibility: hidden;;
+@media (hover: hover) {
+  app-letter-button {
+    visibility: hidden;
+  }
 }
 
 .line__outer:hover app-letter-button {
