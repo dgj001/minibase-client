@@ -17,6 +17,7 @@ export class TreeService {
   private rootNode: TreeNode;
   private databaseNode: TreeNode;
   private editSem = new Semaphore();
+  private projectId: string;
 
   constructor(private dbDataService: DbDataService) { }
 
@@ -50,11 +51,16 @@ export class TreeService {
   }
 
   load(projectId: string) {
+    if (projectId === this.projectId) {
+      return; // already loaded
+    }
+
     DatabaseNodeData.get(projectId, this.dbDataService).subscribe(nodeData => {
       this.databaseNode = new TreeNode(nodeData, this.dbDataService);
       this.rootNode = this.databaseNode;
       this.computeVisibleLines();
     });
+    this.projectId = projectId;
   }
 
   get lockIdChanged(): Observable<string> {

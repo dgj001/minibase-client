@@ -1,5 +1,5 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport (click)="drawer.toggle()"
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
@@ -10,13 +10,13 @@
       <span class="header-text">Minibase</span>
     </mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item class="sidenav-link" routerLink="/users" routerLinkActive="sidenav-link-active">
+      <a mat-list-item class="sidenav-link" routerLink="/users" routerLinkActive="sidenav-link-active" (click)="onClickNav()">
         <svg class="nav-icon">
           <use xlink:href="assets/svg/icons.svg#icon-users"></use>
         </svg>
         Authentication
       </a>
-      <a mat-list-item class="sidenav-link" routerLink="/database" routerLinkActive="sidenav-link-active">
+      <a mat-list-item class="sidenav-link" routerLink="/database" routerLinkActive="sidenav-link-active" (click)="onClickNav()">
         <svg class="nav-icon">
           <use xlink:href="assets/svg/icons.svg#icon-credit-card"></use>
         </svg>
