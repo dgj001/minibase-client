@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { Subject, Observable } from 'rxjs';
+import { Subject, Observable, BehaviorSubject } from 'rxjs';
 import { Project } from './project.model';
 
 @Injectable()
 export class ProjectService {
   projects = new Subject<Project[]>();
-  selectedProjectId = new Subject<string>();
+  selectedProjectId = new BehaviorSubject<string>(undefined);
 
   private _selectedProjectId: string;
 
