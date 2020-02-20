@@ -1,0 +1,17 @@
+mat-header-row {
+  background-color: var(--color-gray-light-1);
+  min-height: 40px;
+}
+
+.card {
+  margin: 2rem;
+  padding: 0.3rem;
+  border-radius: .6rem;
+  background-color: var(--color-gray-light-1);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .3);
+
+  &__body {
+    min-height: 30rem;
+    background-color: var(--color-white-1);
+  }
+}

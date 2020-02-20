@@ -1,14 +1,9 @@
 <div class="content" fxLayout="column">
   <div class="card">
-    <div class="card__header" fxLayout="row" fxLayoutAlign="space-between">
-      <div class="card__header-left">&nbsp;</div>
-      <div class="card__header-right">
-      </div>
-    </div>
     <div class="card__body" fxLayout="column">
       <mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="email">
-          <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="column">Email</mat-header-cell>
           <mat-cell *matCellDef="let element">{{ element.email }}</mat-cell>
         </ng-container>
 

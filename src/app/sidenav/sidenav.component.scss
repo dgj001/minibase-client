@@ -27,6 +27,7 @@
 
 .sidenav-link {
   color: var(--color-gray-light-3);
+  font-size: 1.4rem;
 }
 
 .sidenav-link-active {
@@ -38,6 +39,10 @@
   height: 2.25rem;
   width: 2.25rem;
   margin-right: 1.5rem;
+}
+
+.header-text {
+  font-weight: 400;
 }
 
 .nav-icon {
