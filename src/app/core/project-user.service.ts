@@ -10,15 +10,16 @@ import { environment } from 'src/environments/environment';
 export class ProjectUserService {
   constructor(private http: HttpClient) { }
 
-  public getProjectUsers(projectId: string): Observable<ProjectUser[]> {
+  public getProjectUsers(projectId: string): Observable<ProjectUser[]> { // move to db-data?
     const url = `${environment.baseUrl}/projectUsers?projectId=${projectId}`;
     return this.http.get<any>(url)
       .pipe(
         map(response => {
-          return response.projectUsers.map(prjUser => {
+          return response.data.documents.map(prjUser => {
             return {
               id: prjUser._id,
-              email: prjUser.email
+              email: prjUser.email,
+              createdAt: prjUser.createdAt
             };
           });
         })

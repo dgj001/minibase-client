@@ -21,5 +21,9 @@ getTestBed().initTestEnvironment(
 );
 // Then we find all the tests.
 const context = require.context('./', true, /\.spec\.ts$/);
+
+// Or we find one of the tests.
+// const context = require.context('./', true, /rest-field\.spec\.ts$/);
+
 // And load the modules.
 context.keys().map(context);

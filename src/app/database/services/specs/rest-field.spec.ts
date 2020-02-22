@@ -24,17 +24,20 @@ describe('DbDataService - Field', () => {
 
   it('should get fields', () => {
     const fakeResponse = {
-      status: 'ok',
-      fields: [
-        { _id: 'id1', name: 'fld1', value: 'val1' },
-        { _id: 'id2', name: 'fld2', value: 'val2' }
-      ]
+      status: 'success',
+      data: {
+        documents: [
+          { _id: 'id1', name: 'fld1', value: 'val1' },
+          { _id: 'id2', name: 'fld2', value: 'val2' }
+        ]
+      }
     };
 
     service.getFields('dummy').subscribe(fields => {
-      expect(fields.length).toBe(fakeResponse.fields.length);
-      expect(fields[0].id).toBe(fakeResponse.fields[0]._id);
-      expect(fields[1].name).toBe(fakeResponse.fields[1].name);
+      expect(fields).toBeTruthy();
+      expect(fields.length).toBe(fakeResponse.data.documents.length);
+      expect(fields[0].id).toBe(fakeResponse.data.documents[0]._id);
+      expect(fields[1].name).toBe(fakeResponse.data.documents[1].name);
     });
 
     const req = httpMock.expectOne(`${environment.baseUrl}/fields?documentId=dummy`);
@@ -44,13 +47,18 @@ describe('DbDataService - Field', () => {
 
   it('should get single field', () => {
     const fakeResponse = {
-      status: 'ok',
-      field: { _id: 'id1', name: 'fld1', value: 'val1' }
+      status: 'success',
+      data: {
+        document: {
+          _id: 'id1', name: 'fld1', value: 'val1'
+        }
+      }
     };
 
     service.getField('dummy').subscribe(field => {
-      expect(field.id).toBe(fakeResponse.field._id);
-      expect(field.name).toBe(fakeResponse.field.name);
+      expect(field).toBeTruthy();
+      expect(field.id).toBe(fakeResponse.data.document._id);
+      expect(field.name).toBe(fakeResponse.data.document.name);
     });
 
     const req = httpMock.expectOne(`${environment.baseUrl}/fields/dummy`);
@@ -61,11 +69,13 @@ describe('DbDataService - Field', () => {
   it('should get field counts', () => {
     const fakeResponse = {
       status: 'ok',
-      count: 4
+      data: {
+        count: 4
+      }
     };
 
     service.getFieldCount('dummy').subscribe(count => {
-      expect(count).toBe(fakeResponse.count);
+      expect(count).toBe(fakeResponse.data.count);
     });
 
     const req = httpMock.expectOne(`${environment.baseUrl}/fields/count?documentId=dummy`);
@@ -82,17 +92,19 @@ describe('DbDataService - Field', () => {
     };
 
     const fakeResponse = {
-      status: 'ok',
-      createdField: {
-        _id: 'created id',
-        name: 'created name',
-        value: 'created value'
+      status: 'success',
+      data: {
+        field: {
+          _id: 'created id',
+          name: 'created name',
+          value: 'created value'
+        }
       }
     };
 
     service.createField(field).subscribe(result => {
       expect(result).toBe(true);
-      expect(field.id).toBe(fakeResponse.createdField._id);
+      expect(field.id).toBe(fakeResponse.data.field._id);
     });
 
     const req = httpMock.expectOne(`${environment.baseUrl}/fields`);
@@ -102,7 +114,7 @@ describe('DbDataService - Field', () => {
 
   it('should delete fields', () => {
     const fakeResponse = {
-      status: '/fields DELETE successful'
+      status: 'success'
     };
 
     service.deleteField('dummy').subscribe(result => {
@@ -116,7 +128,7 @@ describe('DbDataService - Field', () => {
 
   it('should update fields', () => {
     const fakeResponse = {
-      status: '/fields PATCH successful'
+      status: 'success'
     };
 
     service.updateField({ id: 'dummy', documentId: 'docId', name: 'whatever', value: 'hello' }).subscribe(result => {

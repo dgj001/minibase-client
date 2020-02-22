@@ -10,7 +10,7 @@ import { ProjectService } from 'src/app/core/project.service';
   styleUrls: ['./user-table.component.scss']
 })
 export class UserTableComponent implements OnInit {
-  displayedColumns = ['email'];
+  displayedColumns = ['email', 'createdAt'];
   dataSource = new MatTableDataSource<ProjectUser>();
 
   constructor(

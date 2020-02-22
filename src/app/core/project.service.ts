@@ -27,12 +27,12 @@ export class ProjectService {
     this.selectedProjectId.next(projectId);
   }
 
-  private getProjects(userId: string): Observable<Project[]> {
+  private getProjects(userId: string): Observable<Project[]> { // move to db-data?
     const url = `${environment.baseUrl}/projects`;
     return this.http.get<any>(url)
       .pipe(
         map(response => {
-          return response.projects.map(prj => {
+          return response.data.documents.map(prj => {
             return {
               id: prj._id,
               name: prj.name,

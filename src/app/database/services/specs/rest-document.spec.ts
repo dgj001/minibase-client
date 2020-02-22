@@ -24,14 +24,16 @@ describe('DbDataService - Document', () => {
 
   it('should get a single document', () => {
     const fakeResponse = {
-      status: 'ok',
-      document: { _id: 'id1', name: 'doc1' }
+      status: 'success',
+      data: {
+        document: { _id: 'id1', name: 'doc1' }
+      }
     };
 
     service.getDocument('dummy').subscribe(doc => {
       expect(doc).toBeTruthy();
-      expect(doc.id).toBe(fakeResponse.document._id);
-      expect(doc.name).toBe(fakeResponse.document.name);
+      expect(doc.id).toBe(fakeResponse.data.document._id);
+      expect(doc.name).toBe(fakeResponse.data.document.name);
     });
 
     const req = httpMock.expectOne(`${environment.baseUrl}/document/dummy`);
@@ -41,17 +43,19 @@ describe('DbDataService - Document', () => {
 
   it('should get documents', () => {
     const fakeResponse = {
-      status: 'ok',
-      documents: [
-        { _id: 'id1', name: 'doc1' },
-        { _id: 'id2', name: 'doc2' }
-      ]
+      status: 'success',
+      data: {
+        documents: [
+          { _id: 'id1', name: 'doc1' },
+          { _id: 'id2', name: 'doc2' }
+        ]
+      }
     };
 
     service.getDocuments('dummy').subscribe(docs => {
-      expect(docs.length).toBe(fakeResponse.documents.length);
-      expect(docs[0].id).toBe(fakeResponse.documents[0]._id);
-      expect(docs[1].name).toBe(fakeResponse.documents[1].name);
+      expect(docs.length).toBe(fakeResponse.data.documents.length);
+      expect(docs[0].id).toBe(fakeResponse.data.documents[0]._id);
+      expect(docs[1].name).toBe(fakeResponse.data.documents[1].name);
     });
 
     const req = httpMock.expectOne(`${environment.baseUrl}/documents?collectionId=dummy`);
@@ -61,12 +65,14 @@ describe('DbDataService - Document', () => {
 
   it('should get document counts', () => {
     const fakeResponse = {
-      status: 'ok',
-      count: 4
+      status: 'success',
+      data: {
+        count: 4
+      }
     };
 
     service.getDocumentCount('dummy').subscribe(count => {
-      expect(count).toBe(fakeResponse.count);
+      expect(count).toBe(fakeResponse.data.count);
     });
 
     const req = httpMock.expectOne(`${environment.baseUrl}/documents/count?collectionId=dummy`);
@@ -82,16 +88,18 @@ describe('DbDataService - Document', () => {
     };
 
     const fakeResponse = {
-      status: 'ok',
-      createdDocument: {
-        _id: 'created id',
-        name: 'created name'
+      status: 'success',
+      data: {
+        document: {
+          _id: 'created id',
+          name: 'created name'
+        }
       }
     };
 
     service.createDocument(document).subscribe(result => {
       expect(result).toBe(true);
-      expect(document.id).toBe(fakeResponse.createdDocument._id);
+      expect(document.id).toBe(fakeResponse.data.document._id);
     });
 
     const req = httpMock.expectOne(`${environment.baseUrl}/documents`);
@@ -101,7 +109,7 @@ describe('DbDataService - Document', () => {
 
   it('should delete documents', () => {
     const fakeResponse = {
-      status: '/documents DELETE successful'
+      status: 'success'
     };
 
     service.deleteDocument('dummy').subscribe(result => {
@@ -115,7 +123,7 @@ describe('DbDataService - Document', () => {
 
   it('should update documents', () => {
     const fakeResponse = {
-      status: '/documents PATCH successful'
+      status: 'success'
     };
 
     service.updateDocument({ id: 'dummy', collectionId: 'dummy', name: 'whatever' }).subscribe(result => {

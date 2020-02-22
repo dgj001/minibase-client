@@ -24,17 +24,19 @@ describe('DbDataService - Collection', () => {
 
   it('should get collections', () => {
     const fakeResponse = {
-      status: 'ok',
-      collections: [
-        { _id: 'id1', name: 'col1' },
-        { _id: 'id2', name: 'col2' }
-      ]
+      status: 'success',
+      data: {
+        documents: [
+          { _id: 'id1', name: 'col1' },
+          { _id: 'id2', name: 'col2' }
+        ]
+      }
     };
 
     service.getCollections('dummy').subscribe(collections => {
-      expect(collections.length).toBe(fakeResponse.collections.length);
-      expect(collections[0].id).toBe(fakeResponse.collections[0]._id);
-      expect(collections[1].name).toBe(fakeResponse.collections[1].name);
+      expect(collections.length).toBe(fakeResponse.data.documents.length);
+      expect(collections[0].id).toBe(fakeResponse.data.documents[0]._id);
+      expect(collections[1].name).toBe(fakeResponse.data.documents[1].name);
     });
 
     const req = httpMock.expectOne(`${environment.baseUrl}/collections?databaseId=dummy`);
@@ -44,13 +46,16 @@ describe('DbDataService - Collection', () => {
 
   it('should get single collection', () => {
     const fakeResponse = {
-      status: 'ok',
-      collection: { _id: 'id1', name: 'col1' }
+      status: 'success',
+      data: {
+        document: { _id: 'id1', name: 'col1' }
+      }
     };
 
     service.getCollection('dummy').subscribe(col => {
-      expect(col.id).toBe(fakeResponse.collection._id);
-      expect(col.name).toBe(fakeResponse.collection.name);
+      expect(col).toBeTruthy();
+      expect(col.id).toBe(fakeResponse.data.document._id);
+      expect(col.name).toBe(fakeResponse.data.document.name);
     });
 
     const req = httpMock.expectOne(`${environment.baseUrl}/collection/dummy`);
@@ -60,12 +65,14 @@ describe('DbDataService - Collection', () => {
 
   it('should get collection counts', () => {
     const fakeResponse = {
-      status: 'ok',
-      count: 3
+      status: 'success',
+      data: {
+        count: 3
+      }
     };
 
     service.getCollectionCount('dummy').subscribe(count => {
-      expect(count).toBe(fakeResponse.count);
+      expect(count).toBe(fakeResponse.data.count);
     });
 
     const req = httpMock.expectOne(`${environment.baseUrl}/collections/count?databaseId=dummy`);
@@ -82,15 +89,16 @@ describe('DbDataService - Collection', () => {
 
     const fakeResponse = {
       status: 'successful',
-      createdCollection: {
-        _id: 'created id',
-        name: 'created name'
+      data: {
+        collection: {
+          id: 'created id',
+          name: 'created name'
+        }
       }
     };
 
     service.createCollection(collection).subscribe(result => {
       expect(result).toBe(true);
-      expect(collection.id).toBe(fakeResponse.createdCollection._id);
     });
 
     const req = httpMock.expectOne(`${environment.baseUrl}/collections`);
@@ -100,7 +108,7 @@ describe('DbDataService - Collection', () => {
 
   it('should delete collections', () => {
     const fakeResponse = {
-      status: '/collections DELETE successful'
+      status: 'success'
     };
 
     service.deleteCollection('dummy').subscribe(result => {
@@ -114,7 +122,7 @@ describe('DbDataService - Collection', () => {
 
   it('should update collections', () => {
     const fakeResponse = {
-      status: '/collections PATCH successful'
+      status: 'success'
     };
 
     service.updateCollection({ id: 'dummy', databaseId: 'dummy', name: 'whatever' }).subscribe(result => {

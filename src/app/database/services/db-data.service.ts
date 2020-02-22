@@ -18,8 +18,8 @@ export class DbDataService {
     return this.http.post<any>(url, col)
       .pipe(
         map(response => {
-          if (response.createdCollection) {
-            col.id = response.createdCollection._id;
+          if (response.data && response.data.collection) {
+            col.id = response.data.collection._id;
             return true;
           }
           return false;
@@ -32,8 +32,8 @@ export class DbDataService {
     return this.http.post<any>(url, doc)
       .pipe(
         map(response => {
-          if (response.createdDocument) {
-            doc.id = response.createdDocument._id;
+          if (response.data && response.data.document) {
+            doc.id = response.data.document._id;
             return true;
           }
           return false;
@@ -46,8 +46,8 @@ export class DbDataService {
     return this.http.post<any>(url, fld)
       .pipe(
         map(response => {
-          if (response.createdField) {
-            fld.id = response.createdField._id;
+          if (response.data && response.data.field) {
+            fld.id = response.data.field._id;
             return true;
           }
           return false;
@@ -60,7 +60,7 @@ export class DbDataService {
     return this.http.delete<any>(url)
       .pipe(
         map(response => {
-          return response.status.includes('successful');
+          return response.status.includes('success');
         })
       );
   }
@@ -70,8 +70,7 @@ export class DbDataService {
     return this.http.delete<any>(url)
       .pipe(
         map(response => {
-          return response.status.includes
-            ('successful');
+          return response.status.includes('success');
         })
       );
   }
@@ -81,8 +80,7 @@ export class DbDataService {
     return this.http.delete<any>(url)
       .pipe(
         map(response => {
-          return response.status.includes
-            ('successful');
+          return response.status.includes('success');
         })
       );
   }
@@ -92,11 +90,16 @@ export class DbDataService {
     return this.http.get<any>(url)
       .pipe(
         map(response => {
-          return {
-            id: response.collection._id,
-            databaseId: response.collection.databaseId,
-            name: response.collection.name
-          };
+          if (response.data && response.data.document) {
+            const col = response.data.document;
+            return {
+              id: col._id,
+              databaseId: col.databaseId,
+              name: col.name
+            };
+          } else {
+            return undefined;
+          }
         })
       );
   }
@@ -106,7 +109,7 @@ export class DbDataService {
     return this.http.get<any>(url)
       .pipe(
         map(response => {
-          return response.collections.map(col => {
+          return response.data.documents.map(col => {
             return {
               id: col._id,
               name: col.name
@@ -121,7 +124,7 @@ export class DbDataService {
     return this.http.get<any>(url)
       .pipe(
         map(response => {
-          return response.count;
+          return response.data.count;
         })
       );
   }
@@ -131,7 +134,7 @@ export class DbDataService {
     return this.http.get<any>(url)
       .pipe(
         map(response => {
-          const db = response.databases[0];
+          const db = response.data.documents[0];
           return {
             id: db._id,
             name: db.name
@@ -145,11 +148,16 @@ export class DbDataService {
     return this.http.get<any>(url)
       .pipe(
         map(response => {
-          return {
-            id: response.document._id,
-            collectionId: response.document.collectionId,
-            name: response.document.name
-          };
+          if (response.data && response.data.document) {
+            const doc = response.data.document;
+            return {
+              id: doc._id,
+              collectionId: doc.collectionId,
+              name: doc.name
+            };
+          } else {
+            return undefined;
+          }
         })
       );
   }
@@ -159,7 +167,7 @@ export class DbDataService {
     return this.http.get<any>(url)
       .pipe(
         map(response => {
-          return response.documents.map(doc => {
+          return response.data.documents.map(doc => {
             return {
               id: doc._id,
               name: doc.name
@@ -174,7 +182,7 @@ export class DbDataService {
     return this.http.get<any>(url)
       .pipe(
         map(response => {
-          return response.count;
+          return response.data.count;
         })
       );
   }
@@ -184,11 +192,16 @@ export class DbDataService {
     return this.http.get<any>(url)
       .pipe(
         map(response => {
-          return {
-            id: response.field._id,
-            documentId: response.field.documentId,
-            name: response.field.name
-          };
+          if (response.data && response.data.document) {
+            const fld = response.data.document;
+            return {
+              id: fld._id,
+              documentId: fld.documentId,
+              name: fld.name
+            };
+          } else {
+            return undefined;
+          }
         })
       );
   }
@@ -198,13 +211,17 @@ export class DbDataService {
     return this.http.get<any>(url)
       .pipe(
         map(response => {
-          return response.fields.map(fld => {
-            return {
-              id: fld._id,
-              name: fld.name,
-              value: fld.value
-            };
-          });
+          if (response.data && response.data.documents) {
+            return response.data.documents.map(fld => {
+              return {
+                id: fld._id,
+                name: fld.name,
+                value: fld.value
+              };
+            });
+          } else {
+            return undefined;
+          }
         })
       );
   }
@@ -214,7 +231,11 @@ export class DbDataService {
     return this.http.get<any>(url)
       .pipe(
         map(response => {
-          return response.count;
+          if (response.data && response.data.count) {
+            return response.data.count;
+          } else {
+            return undefined;
+          }
         })
       );
   }
@@ -224,7 +245,7 @@ export class DbDataService {
     return this.http.patch<any>(url, col)
       .pipe(
         map(response => {
-          return response.status.includes('successful');
+          return response.status.includes('success');
         })
       );
   }
@@ -234,7 +255,7 @@ export class DbDataService {
     return this.http.patch<any>(url, db)
       .pipe(
         map(response => {
-          return response.status.includes('successful');
+          return response.status.includes('success');
         })
       );
   }
@@ -244,7 +265,7 @@ export class DbDataService {
     return this.http.patch<any>(url, doc)
       .pipe(
         map(response => {
-          return response.status.includes('successful');
+          return response.status.includes('success');
         })
       );
   }
@@ -254,7 +275,7 @@ export class DbDataService {
     return this.http.patch<any>(url, fld)
       .pipe(
         map(response => {
-          return response.status.includes('successful');
+          return response.status.includes('success');
         })
       );
   }
