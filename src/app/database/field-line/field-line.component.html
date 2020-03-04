@@ -18,24 +18,28 @@
       >
     </span>
 
-    <div *ngIf="line.isNew" class="line__name" fxLayout="column">
-      <div fxLayout="row">
-        <div class="line__label">Name:</div>
-        <input
-          #newName
-          class="line__value line__value-editing"
-          [(ngModel)]="field.name"
-          (keydown.enter)="addNew()"
-          (keydown.escape)="cancelNew()"
-        >
-        <div class="line__label">Value:</div>
-        <input
-          #newValue
-          class="line__value line__value-editing"
-          [(ngModel)]="field.value"
-          (keydown.enter)="addNew()"
-          (keydown.escape)="cancelNew()"
-        >
+    <div *ngIf="line.isNew">
+      <div fxLayout="column" fxLayout.gt-xs="row">
+        <div fxLayout="row">
+          <div class="line__label">Name:</div>
+          <input
+            #newName
+            class="line__value line__value-editing"
+            [(ngModel)]="field.name"
+            (keydown.enter)="addNew()"
+            (keydown.escape)="cancelNew()"
+          >
+        </div>
+        <div fxLayout="row">
+          <div class="line__label">Value:</div>
+          <input
+            #newValue
+            class="line__value line__value-editing"
+            [(ngModel)]="field.value"
+            (keydown.enter)="addNew()"
+            (keydown.escape)="cancelNew()"
+          >
+        </div>
         <div fxLayout="row" fxLayoutAlign="left center">
           <app-icon-button [icon]="'icon-checkmark'" class="ok-button" (click)="addNew()"></app-icon-button>
           <app-icon-button [icon]="'icon-cross'" (click)="cancelNew()"></app-icon-button>

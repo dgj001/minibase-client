@@ -13,6 +13,7 @@ import { TreeColumnsComponent } from './tree-columns/tree-columns.component';
 import { SharedModule } from '../shared/shared.module';
 import { LetterButtonComponent } from './letter-button/letter-button.component';
 import { CoreModule } from '../core/core.module';
+import { TreeEditorComponent } from './tree-editor/tree-editor.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CoreModule } from '../core/core.module';
     FieldLineComponent,
     LetterButtonComponent,
     TreeColComponent,
-    TreeColumnsComponent
+    TreeColumnsComponent,
+    TreeEditorComponent
   ],
   imports: [
     AutoSizeInputModule,
