@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card__header" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="card__header-left" fxLayout="row">
+      &nbsp;
+      <!-- <div *ngFor="let crumb of crumbs$ | async, let i = index" fxLayout="row">
+        <span class="line__label" *ngIf="i > 0"> > </span>
+        <div class="line__label line__label-link" (click)="onClickCrumb(crumb.id)">{{crumb.name}}</div>
+      </div> -->
+    </div>
+  </div>
+  <div class="card__body" fxLayout="row">
+    <div fxFlex="25">
+      <mat-list class="collection-list" dense>
+        <mat-list-item *ngFor="let col of collections$ | async">{{col.name}}</mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+</div>

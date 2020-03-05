@@ -14,6 +14,9 @@ import { SharedModule } from '../shared/shared.module';
 import { LetterButtonComponent } from './letter-button/letter-button.component';
 import { CoreModule } from '../core/core.module';
 import { TreeEditorComponent } from './tree-editor/tree-editor.component';
+import { MaterialModule } from '../material.module';
+import { CascadeEditorComponent } from './cascade-editor/cascade-editor.component';
+import { CascadeService } from './services/cascade-service';
 
 @NgModule({
   declarations: [
@@ -25,17 +28,20 @@ import { TreeEditorComponent } from './tree-editor/tree-editor.component';
     LetterButtonComponent,
     TreeColComponent,
     TreeColumnsComponent,
-    TreeEditorComponent
+    TreeEditorComponent,
+    CascadeEditorComponent
   ],
   imports: [
     AutoSizeInputModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    MaterialModule
   ],
   exports: [
     DatabaseEditorComponent
   ],
   providers: [
+    CascadeService,
     TreeService
   ]
 })
