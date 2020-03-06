@@ -8,10 +8,36 @@
       </div> -->
     </div>
   </div>
-  <div class="card__body" fxLayout="row">
-    <div fxFlex="25">
-      <mat-list class="collection-list" dense>
-        <mat-list-item *ngFor="let col of collections$ | async">{{col.name}}</mat-list-item>
+  <div class="card__body" fxLayout="row" fxLayoutAlign="start stretch">
+    <!-- <div class="collection-col" fxLayout="column" fxLayoutAlign="center center" *ngIf="isLoadingCols$ | async">
+      <mat-spinner class="spinner"></mat-spinner>
+    </div> -->
+    <div fxFlex="25" class="cascade-column" *ngIf="!(isLoadingCols$ | async)">
+      <mat-list dense>
+        <mat-list-item
+          (click)="selectCollection(col.id)"
+          [class.selected]="col.id === (selectedCol$ | async)"
+          *ngFor="let col of collections$ | async">
+          {{col.name}}
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div fxFlex="25" class="cascade-column" *ngIf="!(isLoadingDocs$ | async)">
+      <mat-list dense>
+        <mat-list-item
+          (click)="selectDocument(doc.id)"
+          [class.selected]="doc.id === (selectedDoc$ | async)"
+          *ngFor="let doc of documents$ | async">
+          {{doc.name}}
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div fxFlex="50" *ngIf="!(isLoadingFlds$ | async)">
+      <mat-list dense>
+        <mat-list-item
+          *ngFor="let fld of fields$ | async">
+          {{fld.name}} :<span class="field-value">&nbsp;"{{fld.value}}"</span>
+        </mat-list-item>
       </mat-list>
     </div>
   </div>

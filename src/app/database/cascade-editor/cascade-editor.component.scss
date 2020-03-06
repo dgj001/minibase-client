@@ -38,7 +38,20 @@ mat-list-item {
   cursor: pointer;
 }
 
-.collection-list {
-  height: 100%;
+.cascade-column {
   border-right: 2px solid #ddd;
+}
+
+.spinner {
+  display: block;
+  text-align: center;
+}
+
+.selected,
+mat-list-item:hover {
+  background: #eee;
+}
+
+.field-value {
+  font-weight: 500;
 }
