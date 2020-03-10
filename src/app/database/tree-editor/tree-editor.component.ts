@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { TreeLine } from '../models/tree-line.model';
-import { ProjectService } from 'src/app/core/project.service';
+import { ProjectService } from 'src/app/core/services/project.service';
 import { TreeService } from '../services/tree.service';
 import { Crumb } from '../models/crumb.model';
 

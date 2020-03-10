@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ProjectUserService } from 'src/app/core/project-user.service';
 import { MatTableDataSource } from '@angular/material/table';
-import { ProjectUser } from 'src/app/core/project-user.module';
-import { ProjectService } from 'src/app/core/project.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UserDialogComponent } from '../user-dialog/user-dialog.component';
+
+import { ProjectUserService } from 'src/app/core/services/project-user.service';
+import { ProjectService } from 'src/app/core/services/project.service';
+import { ProjectUser } from 'src/app/core/models/project-user.module';
 
 @Component({
   selector: 'app-user-table',

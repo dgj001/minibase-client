@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ProjectService } from 'src/app/core/project.service';
+import { ProjectService } from 'src/app/core/services/project.service';
 import { CascadeService } from '../services/cascade-service';
 import { Subscription, Observable } from 'rxjs';
 import { Collection } from '../models/collection.model';

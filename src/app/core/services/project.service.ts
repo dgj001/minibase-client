@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Subject, Observable, BehaviorSubject } from 'rxjs';
-import { Project } from './project.model';
+import { Project } from '../models/project.model';
 
 @Injectable()
 export class ProjectService {

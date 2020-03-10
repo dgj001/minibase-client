@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, Observable } from 'rxjs';
 import { Router, NavigationEnd } from '@angular/router';
-import { ProjectService } from '../core/project.service';
-import { Project } from '../core/project.model';
+import { ProjectService } from '../core/services/project.service';
+import { Project } from '../core/models/project.model';
 import { MatSelectChange } from '@angular/material/select';
 
 @Component({
