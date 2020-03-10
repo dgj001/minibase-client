@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Database } from '../models/database.model';
+import { Subscription } from 'rxjs';
+
+import { Database } from 'src/app/core/models/database.model';
 import { BaseLineComponent } from '../base-line/base-line.component';
 import { TreeService } from '../services/tree.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-database-line',

@@ -1,8 +1,10 @@
 import { Observable, of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+
+import { DbDataService } from 'src/app/core/services/db-data.service';
+import { Field } from 'src/app/core/models/field.model';
+
 import { NodeData } from './node-data.model';
-import { DbDataService } from '../services/db-data.service';
-import { Field } from './field.model';
 
 export class FieldNodeData extends NodeData {
   private field: Field;

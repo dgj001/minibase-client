@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { Field } from '../models/field.model';
+import { Subscription } from 'rxjs';
+import { Field } from 'src/app/core/models/field.model';
 import { BaseLineComponent } from '../base-line/base-line.component';
 import { TreeService } from '../services/tree.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-field-line',

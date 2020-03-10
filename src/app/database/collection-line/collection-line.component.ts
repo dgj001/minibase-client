@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { Collection } from '../models/collection.model';
+import { Subscription } from 'rxjs';
+
+import { Collection } from 'src/app/core/models/collection.model';
 import { BaseLineComponent } from '../base-line/base-line.component';
 import { TreeService } from '../services/tree.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-collection-line',

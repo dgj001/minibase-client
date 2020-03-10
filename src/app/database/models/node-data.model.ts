@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { DbDataService } from '../services/db-data.service';
+import { DbDataService } from 'src/app/core/services/db-data.service';
 
 export abstract class NodeData {
   constructor(protected dbDataService: DbDataService) { }

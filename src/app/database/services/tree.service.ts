@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { DbDataService } from './db-data.service';
+import { tap } from 'rxjs/operators';
+
+import { DbDataService } from 'src/app/core/services/db-data.service';
 import { TreeNode } from '../models/tree-node.model';
 import { DatabaseNodeData } from '../models/database-node-data.model';
-import { tap } from 'rxjs/operators';
 import { TreeLine } from '../models/tree-line.model';
 import { Semaphore } from '../../shared/semaphore.model';
 import { Crumb } from '../models/crumb.model';

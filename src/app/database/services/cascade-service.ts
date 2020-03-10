@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { DbDataService } from './db-data.service';
-import { Database } from '../models/database.model';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { Collection } from '../models/collection.model';
-import { Document } from '../models/document.model';
-import { Field } from '../models/field.model';
+
+import { DbDataService } from 'src/app/core/services/db-data.service';
+import { Database } from 'src/app/core/models/database.model';
+import { Collection } from 'src/app/core/models/collection.model';
+import { Document } from 'src/app/core/models/document.model';
+import { Field } from 'src/app/core/models/field.model';
 
 @Injectable()
 export class CascadeService {

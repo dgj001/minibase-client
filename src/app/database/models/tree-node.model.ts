@@ -1,7 +1,9 @@
-import { DbDataService } from '../services/db-data.service';
-import { NodeData } from './node-data.model';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+import { DbDataService } from 'src/app/core/services/db-data.service';
+
+import { NodeData } from './node-data.model';
 
 export class TreeNode implements TreeNode {
   indentLevel: number;

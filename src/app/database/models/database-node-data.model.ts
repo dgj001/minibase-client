@@ -1,8 +1,10 @@
 import { NodeData } from './node-data.model';
 import { Observable } from 'rxjs';
-import { DbDataService } from '../services/db-data.service';
-import { Database } from './database.model';
 import { flatMap, map, tap } from 'rxjs/operators';
+
+import { DbDataService } from 'src/app/core/services/db-data.service';
+import { Database } from 'src/app/core/models/database.model';
+
 import { CollectionNodeData } from './collection-node-data.model';
 
 export class DatabaseNodeData extends NodeData {

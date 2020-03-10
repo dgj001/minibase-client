@@ -1,8 +1,10 @@
 import { Observable, forkJoin, of } from 'rxjs';
 import { flatMap, map, tap } from 'rxjs/operators';
+
+import { DbDataService } from 'src/app/core/services/db-data.service';
+import { Document } from 'src/app/core/models/document.model';
+
 import { NodeData } from './node-data.model';
-import { DbDataService } from '../services/db-data.service';
-import { Document } from './document.model';
 import { FieldNodeData } from './field-node-data.model';
 
 export class DocumentNodeData extends NodeData {

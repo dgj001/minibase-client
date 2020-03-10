@@ -1,10 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ProjectService } from 'src/app/core/services/project.service';
-import { CascadeService } from '../services/cascade-service';
 import { Subscription, Observable } from 'rxjs';
-import { Collection } from '../models/collection.model';
-import { Document } from '../models/document.model';
-import { Field } from '../models/field.model';
+
+import { ProjectService } from 'src/app/core/services/project.service';
+import { Collection } from 'src/app/core/models/collection.model';
+import { Document } from 'src/app/core/models/document.model';
+import { Field } from 'src/app/core/models/field.model';
+
+import { CascadeService } from '../services/cascade-service';
 
 @Component({
   selector: 'app-cascade-editor',

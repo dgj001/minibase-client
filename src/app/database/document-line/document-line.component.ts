@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { Document } from '../models/document.model';
+import { Subscription } from 'rxjs';
+
+import { Document } from 'src/app/core/models/document.model';
 import { BaseLineComponent } from '../base-line/base-line.component';
 import { TreeService } from '../services/tree.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-document-line',

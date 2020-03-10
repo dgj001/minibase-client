@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { TreeService } from '../tree.service';
 import { of } from 'rxjs';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { DbDataService } from '../../services/db-data.service';
+import { DbDataService } from 'src/app/core/services/db-data.service';
 
 describe('TreeService', () => {
   let service: TreeService;
