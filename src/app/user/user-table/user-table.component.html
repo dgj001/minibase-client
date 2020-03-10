@@ -1,5 +1,8 @@
 <div class="content" fxLayout="column">
   <div class="card">
+    <div class="card__header" fxLayout="row" fxLayoutAlign="end">
+      <button class="upper-right-button" mat-raised-button (click)="addUser()">Add User</button>
+    </div>
     <div class="card__body" fxLayout="column">
       <mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="email">

@@ -105,7 +105,7 @@ export class DbDataService {
   }
 
   getCollections(databaseId: string): Observable<Collection[]> {
-    const url = `${environment.baseUrl}/collections?databaseId=${databaseId}`;
+    const url = `${environment.baseUrl}/collections?databaseId=${databaseId}&sort=createdAt`;
     return this.http.get<any>(url)
       .pipe(
         map(response => {
@@ -163,7 +163,7 @@ export class DbDataService {
   }
 
   getDocuments(collectionId: string): Observable<Document[]> {
-    const url = `${environment.baseUrl}/documents?collectionId=${collectionId}`;
+    const url = `${environment.baseUrl}/documents?collectionId=${collectionId}&sort=createdAt`;
     return this.http.get<any>(url)
       .pipe(
         map(response => {
@@ -207,7 +207,7 @@ export class DbDataService {
   }
 
   getFields(documentId: string): Observable<Field[]> {
-    const url = `${environment.baseUrl}/fields?documentId=${documentId}`;
+    const url = `${environment.baseUrl}/fields?documentId=${documentId}&sort=createdAt`;
     return this.http.get<any>(url)
       .pipe(
         map(response => {

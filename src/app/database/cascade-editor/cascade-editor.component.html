@@ -13,6 +13,7 @@
       <mat-spinner class="spinner"></mat-spinner>
     </div> -->
     <div fxFlex="25" class="cascade-column" *ngIf="!(isLoadingCols$ | async)">
+      <div class="collection-header">Collections</div>
       <mat-list dense>
         <mat-list-item
           (click)="selectCollection(col.id)"
@@ -23,6 +24,7 @@
       </mat-list>
     </div>
     <div fxFlex="25" class="cascade-column" *ngIf="!(isLoadingDocs$ | async)">
+      <div class="document-header">Documents</div>
       <mat-list dense>
         <mat-list-item
           (click)="selectDocument(doc.id)"
@@ -33,6 +35,7 @@
       </mat-list>
     </div>
     <div fxFlex="50" *ngIf="!(isLoadingFlds$ | async)">
+      <div class="field-header">Fields</div>
       <mat-list dense>
         <mat-list-item
           *ngFor="let fld of fields$ | async">

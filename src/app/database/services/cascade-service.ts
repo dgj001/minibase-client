@@ -1,15 +1,10 @@
 import { Injectable } from '@angular/core';
-import { DatabaseNodeData } from '../models/database-node-data.model';
 import { DbDataService } from './db-data.service';
 import { Database } from '../models/database.model';
-import { CollectionNodeData } from '../models/collection-node-data.model';
-import { DocumentNodeData } from '../models/document-node-data.model';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Collection } from '../models/collection.model';
 import { Document } from '../models/document.model';
-import { map } from 'rxjs/operators';
 import { Field } from '../models/field.model';
-import { FieldNodeData } from '../models/field-node-data.model';
 
 @Injectable()
 export class CascadeService {
@@ -37,15 +32,11 @@ export class CascadeService {
     this.isLoadingCollections.next(true);
 
     // Load database node to get database id
-    DatabaseNodeData.get(projectId, this.dbDataService).subscribe(nodeData => {
-      this.database = nodeData.getObject();
+    this.dbDataService.getDatabase(projectId).subscribe(db => {
+      this.database = db;
+
       // Use database id to get collections
-      CollectionNodeData.getSiblings(this.database.id, this.dbDataService)
-        .pipe(
-          map(nodes => {
-            return nodes.map(node => node.getObject());
-          })
-        )
+      this.dbDataService.getCollections(this.database.id)
         .subscribe(collections => {
           this.collections.next(collections);
           if (collections.length > 0) {
@@ -63,12 +54,7 @@ export class CascadeService {
     this.isLoadingDocuments.next(true);
 
     // Use collection id to get documents
-    DocumentNodeData.getSiblings(collectionId, this.dbDataService)
-      .pipe(
-        map(nodes => {
-          return nodes.map(node => node.getObject());
-        })
-      )
+    this.dbDataService.getDocuments(collectionId)
       .subscribe(documents => {
         this.selectedCollection.next(collectionId);
         this.documents.next(documents);
@@ -85,17 +71,11 @@ export class CascadeService {
     this.isLoadingFields.next(true);
 
     // Use collection id to get documents
-    FieldNodeData.getSiblings(documentId, this.dbDataService)
-      .pipe(
-        map(nodes => {
-          return nodes.map(node => node.getObject());
-        })
-      )
+    this.dbDataService.getFields(documentId)
       .subscribe(fields => {
         this.selectedDocument.next(documentId);
         this.fields.next(fields);
         this.isLoadingFields.next(false);
       });
-
   }
 }

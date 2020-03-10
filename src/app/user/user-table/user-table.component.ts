@@ -3,6 +3,8 @@ import { ProjectUserService } from 'src/app/core/project-user.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProjectUser } from 'src/app/core/project-user.module';
 import { ProjectService } from 'src/app/core/project.service';
+import { MatDialog } from '@angular/material/dialog';
+import { UserDialogComponent } from '../user-dialog/user-dialog.component';
 
 @Component({
   selector: 'app-user-table',
@@ -15,7 +17,8 @@ export class UserTableComponent implements OnInit {
 
   constructor(
     private projectUserService: ProjectUserService,
-    private projectService: ProjectService
+    private projectService: ProjectService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -26,6 +29,17 @@ export class UserTableComponent implements OnInit {
       this.projectUserService.getProjectUsers(projectId).subscribe(users => {
         this.dataSource.data = users;
       });
+    });
+  }
+
+  addUser() {
+    const dialogRef = this.dialog.open(UserDialogComponent, {
+      width: '500px',
+      data: { name: 'testing' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
     });
   }
 }

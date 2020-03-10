@@ -9,9 +9,16 @@ mat-header-row {
   border-radius: .6rem;
   background-color: var(--color-gray-light-1);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .3);
+  position: relative;
 
   &__body {
     min-height: 30rem;
     background-color: var(--color-white-1);
   }
+}
+
+.upper-right-button {
+  position: absolute;
+  right: .25em;
+  top: .25em;
 }

@@ -1,0 +1,13 @@
+<h3>Add an Email/Password user</h3>
+<div mat-dialog-content>
+  <div class="container">
+    <label for="email">Email</label>
+    <label for="password">Password</label>
+    <input type="text" name="email">
+    <input type="password" name="password">
+  </div>
+</div>
+<div class="button-bar" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data.email" cdkFocusInitial>Add User</button>
+</div>
