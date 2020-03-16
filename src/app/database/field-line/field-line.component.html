@@ -30,6 +30,7 @@
             (keydown.escape)="cancelNew()"
           >
         </div>
+        <div class="vertical-spacer"></div>
         <div fxLayout="row">
           <div class="line__label">Value:</div>
           <input
@@ -40,7 +41,8 @@
             (keydown.escape)="cancelNew()"
           >
         </div>
-        <div fxLayout="row" fxLayoutAlign="left center">
+        <div class="vertical-spacer"></div>
+        <div fxLayout="row" fxLayoutAlign="center center">
           <app-icon-button [icon]="'icon-checkmark'" class="ok-button" (click)="addNew()"></app-icon-button>
           <app-icon-button [icon]="'icon-cross'" (click)="cancelNew()"></app-icon-button>
         </div>
