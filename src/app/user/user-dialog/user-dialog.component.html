@@ -3,11 +3,11 @@
   <div class="container">
     <label for="email">Email</label>
     <label for="password">Password</label>
-    <input type="text" name="email">
-    <input type="password" name="password">
+    <input type="text" name="email" [(ngModel)]="projUser.email">
+    <input type="password" name="password" [(ngModel)]="projUser.password">
   </div>
 </div>
 <div class="button-bar" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
   <button mat-button (click)="onCancelClick()">Cancel</button>
-  <button mat-button [mat-dialog-close]="data.email" cdkFocusInitial>Add User</button>
+  <button mat-button [mat-dialog-close]="projUser.email" cdkFocusInitial>Add User</button>
 </div>
