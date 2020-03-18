@@ -50,12 +50,14 @@ export class UserTableComponent implements OnInit {
       data: projUser
     });
 
-    dialogRef.afterClosed().subscribe(() => {
-      this.projectUserService.signUp(projUser).subscribe(result => {
-        if (result) {
-          this.fetchProjectUsers();
-        }
-      });
+    dialogRef.afterClosed().subscribe(closeData => {
+      if (closeData) {
+        this.projectUserService.signUp(projUser).subscribe(result => {
+          if (result) {
+            this.fetchProjectUsers();
+          }
+        });
+      }
     });
   }
 }

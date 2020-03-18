@@ -1,22 +1,17 @@
-.container {
-  display: grid;
-  // width: 100%;
-  grid-template-rows: 1.8rem 3rem;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1rem;
-}
-
 label {
   display: inline-block;
   font-size: 1.2rem;
+  margin-bottom: .6rem;
 }
 
 input {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   border: 1px solid #ddd;
   border-radius: 3px;
   outline-color: blue;
   padding: .4rem 1rem;
+  margin-bottom: 1rem;
+  width: 95%;
 }
 
 .button-bar {
